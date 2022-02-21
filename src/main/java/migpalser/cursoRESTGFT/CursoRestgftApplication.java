@@ -4,6 +4,9 @@ import javax.annotation.Generated;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +33,13 @@ public class CursoRestgftApplication {
 	@GetMapping("/hellobean")
 	public HelloBean afayaivos() {
 		return new HelloBean("afayaivos!!");
+	}
+	
+	@GetMapping("/hellobeanRE")
+	public ResponseEntity<HelloBean> afayaivosRE() {
+		HttpHeaders jed=new HttpHeaders();
+		jed.add("Content-language", "ast");
+		return new ResponseEntity<HelloBean>(new HelloBean("afayaivos!!"), jed, HttpStatus.OK);
 	}
 	
 }
