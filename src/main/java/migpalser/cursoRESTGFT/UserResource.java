@@ -31,6 +31,12 @@ public class UserResource {
 	
 	@GetMapping("/users/{id}")
 	public User userById(@PathVariable int id){
-		return udao.findOne(id);
+		User u= udao.findOne(id);
+		
+		if(u==null) {
+			throw new UserNotFoundException("No está ese pavo");
+		}
+		
+		return u;
 	}
 }
